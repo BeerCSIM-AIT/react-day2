@@ -1,21 +1,26 @@
 import logo from "./logo.svg";
 import "./App.css";
 import Head from "./Head";
-import Footer from './Footer';
-import Welcome from './Welcome';
+import Footer from "./Footer";
+import Welcome from "./Welcome";
+import NameCard from "./NameCard";
+import CoffeeCard from './CoffeeCard';
 
 function App() {
+  let coffees = [
+    //nested object
+    { key: 1, name: "Cappucino", price: { hot: 45, cold: 50, frappe: 60 }, picture: "cappucino.jpg" },
+    { key: 2, name: "Latte", price: { hot: 50, cold: 55, frappe: 65 }, picture: "latte.jpg" },
+    { key: 3, name: "Americano", price: { hot: 40, cold: 45, frappe: 55 }, picture: "americano.jpg" },
+    // { key: 3,name: "Americano", hot: 40, cold: 45, frappe: 55 , picture: "americano.jpg" },
+  ]
   return (
     <>
       <Head />
-      <Welcome name="Maria"/>
-      <p className="App">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis fugit
-        iusto reiciendis quo officiis quibusdam doloribus eius quae, officia
-        provident.
-      </p>
-      <Footer/>
-      <Welcome name="Josef"/>
+      {
+        coffees.map((c)=> <CoffeeCard key={c.key} name={c.name} price={c.price} picture={c.picture} />)
+      }
+      <Footer />
     </>
   );
 }
